@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<p>Add a new topic:</p>
+<p>Agregar nueva Tarea:</p>
 
     <form action="{% url 'crud_app:agregar' %}" method='post'>
         {% csrf_token %}
         {{ form.as_p }}
-        <button name="submit">add topic</button>
+        <button name="submit">Agregar</button>
     </form>
 
 {% endblock content %}

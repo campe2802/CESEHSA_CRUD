@@ -1,0 +1,13 @@
+{% extends "crud/base.html" %}
+
+{% block content %}
+  <p>Editar Tarea: {{ tarea }}</p>
+
+  <form action="{% url 'crud_app:editar' tarea.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Guardar</button>
+  </form>
+
+
+{% endblock content %}

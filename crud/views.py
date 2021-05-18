@@ -27,3 +27,26 @@ def agregar(request):
     # Display a blank or invalid form.
     context = {'form': form}
     return render(request, 'crud/agregar.html', context)
+
+def eliminar(request, tarea_id):
+    tarea = Tarea.objects.get(id=tarea_id)
+    tarea.delete()
+    return redirect('todo_app:index')
+
+def editar(request, tarea_id):
+    """Edit an existing entry."""
+    tarea = Tarea.objects.get(id=tarea_id)
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current entry.
+        form = TareaForm(instance=tarea)
+    else:
+        # POST data submitted; process data.
+        form = TareaForm(instance=tarea, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('crud_app:index')
+
+    context = {'tarea': tarea, 'form': form}
+    return render(request, 'crud/editar.html', context)
+
+

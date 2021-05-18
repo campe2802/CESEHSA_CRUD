@@ -2,9 +2,12 @@
 
 {% block content %}
     <h1>Lista de Tareas: </h1>
+    <h3><a href="{% url 'crud_app:agregar' %}">Agregar Tarea </a></h3>
     {% for tarea in tareas %}
     <li>
         {{ tarea }}
+        <button><a href="{% url 'crud_app:eliminar' tarea.id %}"> Eliminar </a></button>
+        <button><a href="{% url 'crud_app:editar' tarea.id %}"> Editar </a></button>
 
     </li>
     {% empty %}
