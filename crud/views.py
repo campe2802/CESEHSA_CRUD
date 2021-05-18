@@ -31,7 +31,7 @@ def agregar(request):
 def eliminar(request, tarea_id):
     tarea = Tarea.objects.get(id=tarea_id)
     tarea.delete()
-    return redirect('todo_app:index')
+    return redirect('crud_app:index')
 
 def editar(request, tarea_id):
     """Edit an existing entry."""
